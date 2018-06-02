@@ -1,0 +1,36 @@
+<div *ngIf="show; else data">
+  <h2>My first Movie</h2>
+
+  <div>
+    <label for="">ID: </label>
+    <input type="text" [(ngModel)]='idMovie'>
+  </div>
+
+  <div>
+    <label for="">Name: </label>
+    <input type="text" [(ngModel)]='nameMovie'>
+  </div>
+
+  <app-actor (dataActor)="listenActor($event)"></app-actor>
+
+  <br>
+
+  <h3>Cast:</h3>
+
+  <ul>
+    <li *ngFor="let item of actors"> {{ item.name }} from {{ item.country }}</li>
+  </ul>
+  <br>
+
+  <button (click)="sendData()">Create New Movie</button>
+</div>
+
+<ng-template #data>
+  {{ idMovie }}
+  {{ nameMovie }}
+
+  <ul>
+    <li *ngFor="let item of actors"> {{ item.name }} from {{ item.country }}</li>
+  </ul>
+
+</ng-template>
